@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Tickets</title>
+    <title>Users</title>
+    <link rel="stylesheet" th:href="@{/css/style.css}">
+    <link rel="stylesheet" th:href="@{/css/user.css}">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
+</head>
+<body>
+    <nav class = "navbar">
+        <div class="logo">
+            <i class="bi bi-train-front-fill"></i>
+            <p>RailWings</p>
+        </div>
+        <ul>
+            <li><a th:href="@{/}">Home</a></li>
+            <li><a th:href="@{/users}">Users</a></li>
+            <li><a th:href="@{/trains}">Trains</a></li>
+            <li><a th:href="@{/tickets}">Tickets</a></li>
+        </ul>
+    </nav>
+
+    <!-- -------------------------------------------- -->
+
+    <div class="header-row">
+        <h1>Tickets</h1>
+        <a href="/tickets/new" class = "add-btn">Add New User</a>
+    </div>
+
+<table>
+    <tr>
+        <th>ID</th>
+        <th>User</th>
+        <th>Train</th>
+        <th>Booking Date</th>
+        <th>Final Price</th>
+        <th>Action</th>
+    </tr>
+    <tr th:each="ticket : ${tickets}">
+        <td th:text="${ticket.id}"></td>
+        <td th:text="${ticket.user.name}"></td>
+        <td th:text="${ticket.train.name}"></td>
+        <td th:text="${#temporals.format(ticket.bookingDate, 'dd-MM-yyyy HH:mm')}"></td>
+        <td th:text="${ticket.finalPrice}"></td>
+        <td>
+            <a th:href="@{/tickets/edit/{id}(id=${ticket.id})}" class="action-btn" title="Edit">
+                <i class="bi bi-pencil-fill"></i>
+            </a>
+            <a th:href="@{/tickets/delete/{id}(id=${ticket.id})}" class="action-btn" title="Delete">
+                <i class="bi bi-trash3-fill"></i>
+            </a>
+        </td>
+    </tr>
+</table>
+</body>
+</html>

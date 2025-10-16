@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Users</title>
+    <link rel="stylesheet" th:href="@{/css/style.css}">
+    <link rel="stylesheet" th:href="@{/css/user.css}">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
+</head>
+<body>
+    <nav class = "navbar">
+        <div class="logo">
+            <i class="bi bi-train-front-fill"></i>
+            <p>RailWings</p>
+        </div>
+        <ul>
+            <li><a th:href="@{/}">Home</a></li>
+            <li><a th:href="@{/users}">Users</a></li>
+            <li><a th:href="@{/trains}">Trains</a></li>
+            <li><a th:href="@{/tickets}">Tickets</a></li>
+        </ul>
+    </nav>
+
+    <!-- -------------------------------------------- -->
+
+    <div class="header-row">
+        <h1>Users</h1>
+        <a href="/users/new" class = "add-btn">Add New User</a>
+    </div>
+        
+        <table>
+            <tr>
+                <th>ID</th>
+                <th>Name</th>
+                <th>Email</th>
+                <th>Tickets</th>
+                <th>Actions</th>
+            </tr>
+            <tr th:each="user : ${users}">
+                <td th:text="${user.id}"></td>
+                <td th:text="${user.name}"></td>
+                <td th:text="${user.email}"></td>
+                <td th:text="${#lists.size(user.tickets)}"></td>
+                <!-- new column - which displays the number of tickets booked -->
+                <td>
+                    <a th:href="@{/users/edit/{id}(id=${user.id})}" class="action-btn" title="Edit">
+                        <i class="bi bi-pencil-fill"></i>
+                    </a>
+                    <a th:href="@{/users/delete/{id}(id=${user.id})}" class="action-btn" title="Delete">
+                        <i class="bi bi-trash3-fill"></i>
+                    </a>
+                </td>
+            </tr>
+        </table>
+</body>
+</html>

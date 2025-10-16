@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Train Booking System</title>
+    <link rel="stylesheet" th:href="@{/css/style.css}">
+    <!-- Bootstrap Icons CSS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
+
+    <script th:src="@{/js/script.js}"></script>
+</head>
+<body>
+    <nav class = "navbar">
+        <div class="logo">
+            <i class="bi bi-train-front-fill"></i>
+            <p>RailWings</p>
+        </div>
+        <ul>
+            <li><a th:href="@{/}">Home</a></li>
+            <li><a th:href="@{/users}">Users</a></li>
+            <li><a th:href="@{/trains}">Trains</a></li>
+            <li><a th:href="@{/tickets}">Tickets</a></li>
+        </ul>
+    </nav>
+
+
+    <h1 style="text-align: center;">Welcome to Train Booking System!</h1>
+    <!-- <p>Quick links:</p> -->
+    <ul style="list-style: none; display: flex ;" class="home-btn">
+        <li><a th:href="@{/users/new}">Add New User</a></li>
+        <li><a th:href="@{/trains/new}">Add New Train</a></li>
+        <li><a th:href="@{/tickets/new}">Add New Ticket</a></li>
+        <!-- <li><a th:href="@{/users/profile/{id}(id=${loggedInUser.id})}">Your Profile</a></li> -->
+    </ul>
+
+    <!-- 🖼 Image Slider -->
+    <div class="slider">
+        <div class="slides">
+            <img th:src="@{/images/munnar.jpg}" alt="Train 1">
+            <img th:src="@{/images/rajasthan.jpg}" alt="Train 2">
+            <img th:src="@{/images/delhi.jpg}" alt="Train 2">
+            <img th:src="@{/images/goa.jpg}" alt="Train 3">
+            <img th:src="@{/images/uttarpradesh.jpg}" alt="Train 2">
+            
+        </div>
+    </div>
+    <button class="prev">&#10094;</button>
+    <button class="next">&#10095;</button>
+
+
+     <!-- 🍽 Food Section -->
+
+    <h3 class="food-title">Delicious Meals Onboard</h3>
+    <div class="food-container">
+            <div class="food-card">
+                <img th:src="@{/images/indiancuisine.jpg}" alt="Food 1">
+                <h3>Indian Cuisine</h3>
+                <p>Rich spices, flavorful curries, and diverse regional dishes that celebrate tradition.</p>
+                <button>View Menu</button>
+            </div>
+
+            <div class="food-card">
+                <img th:src="@{/images/italiancuisine.jpg}" alt="Food 2">
+                <h3>Italian Cuisine</h3>
+                <p>Fresh pasta, wood-fired pizzas, and creamy risottos — a true Mediterranean delight.</p>
+                <button>View Menu</button>
+            </div>
+
+            <div class="food-card">
+                <img th:src="@{/images/japanesecuisine.jpg}" alt="Food 3">
+                <h3>Japanese Cuisine</h3>
+                <p>Elegant sushi, ramen, and delicate flavors crafted with simplicity and precision.</p>
+                <button>View Menu</button>
+            </div>
+
+            <div class="food-card">
+                <img th:src="@{/images/greenfood.jpg}" alt="Food 3">
+                <h3>Healthy Meals</h3>
+                <p>Wholesome salads, herb-infused olive oils, and fresh garden ingredients — a healthy twist on classic Italian flavors.</p>
+                <button>View Menu</button>
+            </div>
+    </div>
+
+    
+    <!-- ❤️ Popular Trains Section -->
+    <section class="popular-trains">
+        <h2>Popular Trains</h2>
+        <div class="train-cards">
+            <div class="card">
+                <img th:src="@{/images/train1.jpg}" alt="Express Train">
+                <h3>Rajdhani Express</h3>
+                <p>Fastest route between Chennai & Delhi</p>
+            </div>
+            <div class="card">
+                <img th:src="@{/images/train2.jpg}" alt="Superfast Train">
+                <h3>Shatabdi Express</h3>
+                <p>Comfort and speed in one ride</p>
+            </div>
+            <div class="card">
+                <img th:src="@{/images/train3.jpg}" alt="Luxury Train">
+                <h3>Duronto Express</h3>
+                <p>Non-stop luxury travel experience</p>
+            </div>
+        </div>
+    </section>
+
+
+    <footer>
+        <p>© 2025 Train Booking System | All Rights Reserved</p>
+    </footer>
+</body>
+</html>

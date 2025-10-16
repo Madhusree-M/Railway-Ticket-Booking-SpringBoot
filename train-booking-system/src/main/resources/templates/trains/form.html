@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Train Form</title>
+    <link rel="stylesheet" th:href="@{/css/style.css}">
+    <link rel="stylesheet" th:href="@{/css/user.css}">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
+</head>
+<body>
+    <nav class = "navbar">
+        <div class="logo">
+            <i class="bi bi-train-front-fill"></i>
+            <p>RailWings</p>
+        </div>
+        <ul>
+            <li><a th:href="@{/}">Home</a></li>
+            <li><a th:href="@{/users}">Users</a></li>
+            <li><a th:href="@{/trains}">Trains</a></li>
+            <li><a th:href="@{/tickets}">Tickets</a></li>
+        </ul>
+    </nav>
+
+    <!-- -------------------------------------- -->
+     <div class="form-container">
+        <h2 th:if="${train.id == null}">Create Train</h2>
+        <h3 th:if="${train.id != null}">Edit Train</h3>
+        <form th:action="${train.id == null} ? @{/trains} : @{/trains/update/{id}(id=${train.id})}" 
+        th:object="${train}" method="post">
+
+            <div class="form-group">
+                <label>Name</label>
+                <input type="text" th:field="*{name}" placeholder="Enter train name" required>
+            </div>
+
+            <div class="form-group">
+                <label>Source</label>
+                <input type="text" th:field="*{source}" placeholder="Enter source" required>
+            </div>
+
+            <div class="form-group">
+                <label>Destination</label>
+                <input type="text" th:field="*{destination}" placeholder="Enter destination" required>
+            </div>
+
+            <div class="form-group">
+                <label>Base Price</label>
+                <input type="number" step="0.01" th:field="*{basePrice}" placeholder="Enter base price" required>
+            </div>
+
+            <div class="form-group">
+                <label>Discount Percentage</label>
+                <input type="number" step="0.01" th:field="*{discountPercentage}" placeholder="Enter discount %" required>
+            </div>
+
+            <div class="form-buttons">
+                <button type="submit" class="btn-submit">Save</button>
+                <a th:href="@{/trains}" class="btn-cancel">Cancel</a>
+            </div>
+            
+        </form>
+    </div>
+</body>
+</html>

@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Trains</title>
+    <link rel="stylesheet" th:href="@{/css/style.css}">
+    <link rel="stylesheet" th:href="@{/css/user.css}">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
+</head>
+<body>
+    <nav class = "navbar">
+        <div class="logo">
+            <i class="bi bi-train-front-fill"></i>
+            <p>RailWings</p>
+        </div>
+        <ul>
+            <li><a th:href="@{/}">Home</a></li>
+            <li><a th:href="@{/users}">Users</a></li>
+            <li><a th:href="@{/trains}">Trains</a></li>
+            <li><a th:href="@{/tickets}">Tickets</a></li>
+        </ul>
+    </nav>
+
+    <!-- -------------------------------------------- -->
+
+    <div class="header-row">
+        <h1>Trains</h1>
+        <a href="/trains/new" class = "add-btn">Add New Train</a>
+    </div>
+
+<table>
+    <tr>
+        <th>ID</th>
+        <th>Train Name</th>
+        <th>Source</th>
+        <th>Destination</th>
+        <th>Base Price</th>
+        <th>Discount Percentage</th>
+        <th>Actions</th>
+    </tr>
+    <tr th:each="train : ${trains}">
+        <td th:text="${train.id}"></td>
+        <td th:text="${train.name}"></td>
+        <td th:text="${train.source}"></td>
+        <td th:text="${train.destination}"></td>
+        <td th:text="${train.basePrice}"></td>
+        <td th:text="${train.discountPercentage}"></td>
+        <td>
+            <a th:href="@{/trains/edit/{id}(id=${train.id})}" class="action-btn" title="Edit">
+                <i class="bi bi-pencil-fill"></i>
+            </a>
+            
+            <a th:href="@{/trains/delete/{id}(id=${train.id})}" class="action-btn" title="Delete"></a>
+                <i class="bi bi-trash3-fill"></i>
+            </a>
+        </td>
+    </tr>
+</table>
+</body>
+</html>
